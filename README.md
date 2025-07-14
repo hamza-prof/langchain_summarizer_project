@@ -37,7 +37,6 @@ Includes an intelligent agent that chooses between LLM-based summarization or RA
     │   └── summary.txt       # 📝 Final output summary
     └── utils/
         └── helpers.py        # 🔧 Logger, chunker, env loader
-        ```
 
 ---
 ## ⚙️ Setup
