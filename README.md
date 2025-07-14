@@ -1,4 +1,4 @@
-```markdown
+
 # 🧠 LangChain Text Summarizer
 
 A modular and customizable text summarization and retrieval project powered by LangChain.  
@@ -20,30 +20,26 @@ Includes an intelligent agent that chooses between LLM-based summarization or RA
 
 ## 📁 Project Structure
 
-```
-
-langchain\_summarizer\_project/
-├── main.py                  # 🚀 Entry point
-├── requirements.txt         # 📦 Dependencies
-├── .env                     # 🔐 API keys
-├── config/
-│   └── prompts.py           # ✏️ Prompt templates
-├── data/
-│   └── sample.txt           # 📄 Example input
-├── modules/
-│   ├── loader.py            # 📂 Loads & splits text
-│   ├── summarizer.py        # 🧠 Summarizer
-│   ├── retriever.py         # 🔍 RAG logic
-│   └── agent.py             # 🤖 Agent controller
-├── outputs/
-│   └── summary.txt          # 📝 Output summary
-└── utils/
-└── helpers.py           # 🔧 Logging, chunking, env
-
-````
+    langchain_summarizer_project/
+    ├── main.py               # 🚀 Entry point
+    ├── requirements.txt      # 📦 Dependencies
+    ├── .env                  # 🔐 API keys and secrets
+    ├── config/
+    │   └── prompts.py        # ✏️ Prompt templates
+    ├── data/
+    │   └── sample.txt        # 📄 Example input text
+    ├── modules/
+    │   ├── loader.py         # 📂 Loads & splits text
+    │   ├── summarizer.py     # 🧠 Summarizer tool
+    │   ├── retriever.py      # 🔍 RAG retriever tool
+    │   └── agent.py          # 🤖 Agent logic and decision-making
+    ├── outputs/
+    │   └── summary.txt       # 📝 Final output summary
+    └── utils/
+        └── helpers.py        # 🔧 Logger, chunker, env loader
+        ```
 
 ---
-
 ## ⚙️ Setup
 
 ```bash
@@ -101,5 +97,4 @@ python -m modules.summarizer  # Only summarize
 🔗 [github.com/hamza-prof](https://github.com/hamza-prof)
 📜 License: MIT
 
-```
 
