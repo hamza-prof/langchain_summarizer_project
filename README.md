@@ -1,104 +1,105 @@
-  name: "🧠 LangChain Text Summarizer"
-  description: >
-    📝 A modular and customizable text summarization and retrieval project powered by LangChain. 
-    Includes an intelligent agent that chooses between LLM-based summarization or 
-    RAG (Retrieval-Augmented Generation) depending on user input.
+```markdown
+# 🧠 LangChain Text Summarizer
 
-  features:
-    - 📄 Load and read plain text documents
-    - ✂️ Split long documents into overlapping chunks
-    - 🧠 Summarize using customizable LLM prompt templates
-    - 🔍 Retrieve document answers using vector search (RAG)
-    - 🤖 Intelligent agent chooses between summarizer and retriever
-    - ⚙️ Modular architecture for easy extension
-    - 🔐 API key and logging support via `.env` and `helpers.py`
+A modular and customizable text summarization and retrieval project powered by LangChain.  
+Includes an intelligent agent that chooses between LLM-based summarization or RAG (Retrieval-Augmented Generation) depending on user input.
 
-  structure:
-    root:
-      - main.py: 🚀 Entry point script
-      - requirements.txt: 📦 Python dependencies
-      - .env: 🔐 API keys and secrets
-    folders:
-      - config:
-          - prompts.py: ✏️ Prompt templates and agent system prompt
-      - data:
-          - sample.txt: 🧪 Example input text
-      - modules:
-          - loader.py: 📂 Loads and chunks text
-          - summarizer.py: 🧠 Summarization logic
-          - retriever.py: 🔍 RAG retriever
-          - agent.py: 🤖 Agent logic and tool registration
-      - outputs:
-          - summary.txt: 📝 Summarized output
-      - utils:
-          - helpers.py: 🔧 Text chunking, logging, env loader
+---
 
-  setup:
-    - 🛠️ Clone repository:
-        command: git clone https://github.com/your-username/langchain_summarizer_project.git
-    - 📁 Navigate into project:
-        command: cd langchain_summarizer_project
-    - 🧪 Create virtual environment:
-        command: python -m venv venv
-    - ⚡ Activate environment (Windows):
-        command: .\venv\Scripts\activate
-    - 📦 Install dependencies:
-        command: pip install -r requirements.txt
-    - 🔐 Create `.env` file:
-        content: |
-          OPENAI_API_KEY=your_openai_api_key
-          HUGGINGFACEHUB_API_TOKEN=your_huggingface_token
+## 📌 Features
 
-  usage:
-    - 🔃 Run full pipeline:
-        command: python main.py
-    - 🧩 Run loader:
-        command: python -m modules.loader
-    - 🧠 Run summarizer:
-        command: python -m modules.summarizer
-    - 🤖 Run agent decision logic:
-        command: python -m modules.agent
+- 📄 Load and read plain text documents
+- ✂️ Split long documents into overlapping chunks
+- 🧠 Summarize using customizable LLM prompt templates
+- 🔍 Retrieve answers from documents using vector search (RAG)
+- 🤖 Agent selects either summarizer or retriever tool
+- ⚙️ Modular and extensible architecture
+- 🔐 API and logging via `.env` and `helpers.py`
 
-  output:
-    file: outputs/summary.txt
-    format: 📋 Bullet-point summary with key ideas preserved
+---
 
-  customization:
-    - ✏️ Prompt templates: config/prompts.py
-    - ✂️ Chunking strategy: modules/loader.py
-    - 🧠 LLM summarizer logic: modules/summarizer.py
-    - 🔍 RAG retriever logic: modules/retriever.py
-    - 🤖 Agent controller: modules/agent.py
+## 📁 Project Structure
 
-  tools:
-    - name: 🧠 summarize_text
-      type: LangChain Tool
-      source: modules/summarizer.py
-      description: Summarizes long text into concise bullet points
-    - name: 🔍 retrieve_answer
-      type: LangChain Tool
-      source: modules/retriever.py
-      description: Answers document questions using vector DB (RAG)
+```
 
-  agent:
-    file: modules/agent.py
-    description: >
-      🤖 A LangChain-powered agent that decides whether to summarize or retrieve answers 
-      based on the user’s intent. Selects tools using OpenAI Function Calling.
-    system_prompt: |
-      You are an intelligent assistant.
+langchain\_summarizer\_project/
+├── main.py                  # 🚀 Entry point
+├── requirements.txt         # 📦 Dependencies
+├── .env                     # 🔐 API keys
+├── config/
+│   └── prompts.py           # ✏️ Prompt templates
+├── data/
+│   └── sample.txt           # 📄 Example input
+├── modules/
+│   ├── loader.py            # 📂 Loads & splits text
+│   ├── summarizer.py        # 🧠 Summarizer
+│   ├── retriever.py         # 🔍 RAG logic
+│   └── agent.py             # 🤖 Agent controller
+├── outputs/
+│   └── summary.txt          # 📝 Output summary
+└── utils/
+└── helpers.py           # 🔧 Logging, chunking, env
 
-      If the user's input is long and needs simplification, use the summarizer tool.
-      If the user asks a question that might require document retrieval, use the retriever tool.
+````
 
-      Decide wisely. Return only relevant and clear information.
-    examples:
-      - query: "Please summarize this transcript."
-        tool_used: 🧠 summarize_text
-      - query: "What did the report say about the budget?"
-        tool_used: 🔍 retrieve_answer
+---
 
-  author:
-    name: "👨‍💻 Muhammad Hamza"
-    github: https://github.com/hamza-prof
-    license: MIT
+## ⚙️ Setup
+
+```bash
+# 🛠️ Clone the repository
+git clone https://github.com/your-username/langchain_summarizer_project.git
+cd langchain_summarizer_project
+
+# 🧪 Create virtual environment
+python -m venv venv
+.\venv\Scripts\activate  # On Windows
+
+# 📦 Install dependencies
+pip install -r requirements.txt
+
+# 🔐 Add your API keys to .env
+OPENAI_API_KEY=your_openai_key
+HUGGINGFACEHUB_API_TOKEN=your_token
+````
+
+---
+
+## 🧠 Agent Logic
+
+An intelligent LangChain Agent chooses between:
+
+* 🧠 `summarize_text` → if input is long or structured
+* 🔍 `retrieve_answer` → if input is a question
+
+**System prompt** guides tool selection. Example:
+
+```text
+User: "Summarize the report"
+→ Uses: summarize_text()
+
+User: "What’s mentioned about deadlines?"
+→ Uses: retrieve_answer()
+```
+
+---
+
+## ✅ Usage
+
+```bash
+python main.py              # Run full app
+python -m modules.agent     # Use agent logic
+python -m modules.loader    # Only load + split
+python -m modules.summarizer  # Only summarize
+```
+
+---
+
+## 👨‍💻 Author
+
+**Muhammad Hamza**
+🔗 [github.com/hamza-prof](https://github.com/hamza-prof)
+📜 License: MIT
+
+```
+
