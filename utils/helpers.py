@@ -21,7 +21,7 @@ def get_logger(name: str) -> logging.Logger:
     
     return logger
 
-def split_text(text: str, chunk_size: int= 1000, chunk_overLap: int = 200):
+def get_chunks(text: str, chunk_size: int= 1000, chunk_overLap: int = 200):
     chunks=[]
     start=0
     

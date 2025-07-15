@@ -12,4 +12,7 @@ def load_text_file(file_path: str)-> str:
 
 def get_text_chunks(file_path:str, chunk_size: int = 1000, chunk_overlap: int =200) ->  List[str]:
     text = load_text_file(file_path)
-    return helpers.split_text(text, chunk_size, chunk_overlap)  
+    return helpers.get_chunks(text, chunk_size, chunk_overlap) 
+
+if (load_text_file("data/sample.txt")):
+    print("Sample text file loaded successfully.")

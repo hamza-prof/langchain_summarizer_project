@@ -1,6 +1,6 @@
 from langchain_core.prompts import PromptTemplate
 
-summarization_prompt = PromptTemplate.fromTemplate(
+summarization_prompt = PromptTemplate.from_template(
     """You are an expert text summarizer.
 
 Summarize the following input text while following these rules:

@@ -1,2 +1,6 @@
 python-dotenv
 langchain
+transformers
+langchain-community
+langchain-huggingface
+langchain-groq
