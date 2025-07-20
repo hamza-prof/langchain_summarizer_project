@@ -36,8 +36,7 @@ def main():
         f.write(summary)
 
     logger.info(f"📁 Summary saved to {OUTPUT_PATH}")
-    print("\n📌 Final Summary:\n")
-    print(summary)
+
     
 if __name__ == "__main__":
     main()

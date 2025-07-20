@@ -3,26 +3,17 @@ from typing import List
 from dotenv import load_dotenv
 from langchain.chains import LLMChain
 from config.prompts import summarization_prompt
-from langchain_groq import ChatGroq
 from langchain_core.output_parsers import StrOutputParser
 
-# Load env vars once at module load time
-load_dotenv()
+from modules.llm_initializer import LLMInitializer
+from modules.loaders import get_text_chunks, load_text_file
+
 
 def load_summarization_chain() -> LLMChain:
     """
     Initializes a summarization chain backed by Groq's LLM.
     """
-    model = os.getenv("GROQ_MODEL")
-    temperature = float(os.getenv("GROQ_TEMPERATURE"))
-
-    llm = ChatGroq(
-        api_key=os.getenv("GROQ_API_KEY"),
-        model_name=model,
-        temperature=temperature,
-        max_tokens=512,
-        reasoning_format="hidden",
-    )
+    llm= LLMInitializer.initialize_llm()
     chain = summarization_prompt | llm | StrOutputParser()
     return chain
 
@@ -39,6 +30,27 @@ def get_summarize_chunks(chunks: List[str]) -> List[str]:
 
 def combine_summaries(summaries: List[str]) -> str:
     return "\n\n".join(f"• {s}" for s in summaries)
+
+def summarize_documents(file_paths: List[str]) -> str:
+    # Load documents
+    docs = load_text_file(file_paths)
+        
+    # Split into chunks
+
+    chunks = get_text_chunks(docs)
+        
+    # Extract text from chunks
+        
+        
+    chunk_texts = [chunk.page_content for chunk in chunks]
+        
+    # Get summaries
+    summaries = get_summarize_chunks(chunk_texts)
+        
+    # Combine summaries
+    combined_summary = combine_summaries(summaries)
+        
+    return combined_summary
 
 
 # ---- Hugging Face fallback (commented out) ----

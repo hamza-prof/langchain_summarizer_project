@@ -1,6 +1,11 @@
 python-dotenv
 langchain
+langchain-core
+langchain-pinecone
+pinecone
 transformers
 langchain-community
 langchain-huggingface
 langchain-groq
+langchain-text-splitters
+sentence-transformers
